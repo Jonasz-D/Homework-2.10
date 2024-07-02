@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Quotes</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css" />
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'home' %}">Home</a>
+            {% if user.is_authenticated %}
+            <ul>
+                <li><a href="{% url 'add_quote' %}" role="button">Add quote</a></li>
+                <li><a href="{% url 'add_author' %}" role="button">Add author</a></li>
+            </ul>
+            <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <ul>
+                <li><a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'register' %}">Register</a>
+                </li>
+            </ul>
+            
+            {% endif %}
+        </nav>
+
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
